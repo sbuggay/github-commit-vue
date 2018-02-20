@@ -8,10 +8,9 @@ const app = new Vue({
     },
     methods: {
         async fetchCommits() {
-            const response = await fetch("/api");
+            const response = await fetch("/commits");
             const json = await response.json();
             this.commits = json;
-            console.log(json);
         }
     }
 });
