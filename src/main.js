@@ -1,22 +1,21 @@
-import * as express from "express";
-import * as octokat from "octokat";
-import * as moment from "moment";
+const expres = require("express");
+const octokat = require("octokat");
+const moment = require("moment");
 
 const app = express();
 
-const USER = "";
-const EMAIL = "";
+const user = "";
+const email = "";
 
 const github = octokat({ token: "" });
 
 function getCommits() {
-    return github.fromUrl(`https://api.github.com/users/${USER}/events`).fetch().then(events => {
+    return github.fromUrl(`https://api.github.com/users/${user}/events`).fetch().then(events => {
         const commits = [];
-        // console.log(events);
         events.items.forEach(event => {
             if (event.type === "PushEvent") {
                 event.payload.commits.reverse().forEach(commit => {
-                    if (commit.author.email === EMAIL) {
+                    if (commit.author.email === email) {
                         commits.push({
                             repo: event.repo,
                             createdAt: moment(event.createdAt).format("MMMM Do YYYY, hh:mm:ss"),
@@ -26,10 +25,7 @@ function getCommits() {
                 });
             };
         });
-        console.log(commits);
         return commits;
-    }, failure => {
-        console.error(failure);
     });
 }
 
