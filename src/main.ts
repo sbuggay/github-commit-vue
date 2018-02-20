@@ -32,9 +32,7 @@ function getCommits() {
 }
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get("/", (req, res) => {
-    res.send('hello world');
-});
+app.use(express.static("./public"));
 
 app.get("/api", (req, res) => {
     getCommits().then(commits => {

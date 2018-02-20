@@ -9,6 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
+    "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
+    "watch:serve": "ts-node --inspect src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

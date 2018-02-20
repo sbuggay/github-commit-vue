@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, 'Open Sans', Arial, sans-serif;
+            color: #eee;
+            background-color: #121212;
+        }
+
+        a {
+            color: purple
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table tr:nth-child(odd) {
+            background: #222
+        }
+
+        td {
+            padding: 8px 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vue">
+        <table>
+            <tr>
+                <th>sha</th>
+                <th>repo</th>
+                <th>message</th>
+            </tr>
+            <tr v-for="commit in commits">
+                <td>{{ commit.sha }}</td>
+                <td>
+                    <a :href="commit.repo.url">{{ commit.repo.name }}</a>
+                </td>
+                <td>{{ commit.message }}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
