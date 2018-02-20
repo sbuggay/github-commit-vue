@@ -4,10 +4,10 @@ import * as moment from "moment";
 
 const app = express();
 
-const USER = "sbuggay";
-const EMAIL = "sbuggay@gmail.com";
+const USER = "";
+const EMAIL = "";
 
-const github = octokat({ token: "fe886d4658de8f66b482ed9a4f49fc9f8d1d6beb" });
+const github = octokat({ token: "" });
 
 function getCommits() {
     return github.fromUrl(`https://api.github.com/users/${USER}/events`).fetch().then(events => {
