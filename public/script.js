@@ -1,16 +1,17 @@
 const app = new Vue({
     el: "#vue",
     data: {
-        commits: []
+        commits: [],
+        refresh: 60000 // refresh time in ms
     },
     created() {
         this.fetchCommits();
+        setTimeout(this.fetchCommits(), this.refresh);
     },
     methods: {
         async fetchCommits() {
-            const response = await fetch("/commits");
-            const json = await response.json();
-            this.commits = json;
+            const response = await fetch("/api");
+            this.commits = await response.json();
         }
     }
 });

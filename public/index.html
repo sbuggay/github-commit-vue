@@ -15,6 +15,7 @@
         }
 
         table {
+            height: 100%;
             width: 100%;
             border-collapse: collapse;
         }
@@ -34,19 +35,44 @@
         td {
             padding: 10px 12px;
         }
+
+        .chain {
+            padding: 0;
+        }
     </style>
 </head>
 
 <body>
+
     <div id="vue">
         <table>
             <tr>
+                <th></th>
                 <th>Hash</th>
                 <th>Repository</th>
                 <th>Time</th>
                 <th>Message</th>
             </tr>
             <tr v-for="commit in commits">
+                <td v-if="commit.link === 0"></td>
+                <td v-if="commit.link === 1" class="chain">
+                    <svg x="0" y="0" width="40px" height="40px" viewbox="0 0 10 10" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none" stroke-width=".5">
+                        <path d="M7 5 L5 5 L5 10" fill="none" />
+                    </svg>
+                </td>
+                <td v-if="commit.link === 2" class="chain">
+                    <svg x="0" y="0" width="40px" height="40px" viewbox="0 0 10 10" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none" stroke-width=".5">
+                        <path d="M5 0 L5 5 L7 5 L5 5 L5 10" fill="none" />
+                    </svg>
+                </td>
+                <td v-if="commit.link === 3" class="chain">
+                    <svg x="0" y="0" width="40px" height="40px" viewbox="0 0 10 10" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none" stroke-width=".5">
+                        <path d="M7 5 L5 5 L5 0" fill="none" />
+                    </svg>
+                </td>
                 <td>
                     <a :href="commit.url">
                         {{ commit.sha.slice(0, 7) }}
