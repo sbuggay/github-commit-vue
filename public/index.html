@@ -3,25 +3,36 @@
 <head>
     <style>
         body {
-            font-family: "Helvetica Neue", Helvetica, 'Open Sans', Arial, sans-serif;
+            font-size: 16px;
+            padding: 20px 20px;
+            font-family: Consolas, Monaco, Menlo, monospace;
             color: #eee;
-            background-color: #121212;
+            background-color: #273245;
         }
 
         a {
-            color: purple
+            color: eee
         }
 
         table {
+            width: 100%;
             border-collapse: collapse;
         }
 
         table tr:nth-child(odd) {
-            background: #222
+            background: #19202c;
+        }
+
+        table tr:nth-child(even) {
+            background: #202938;
+        }
+
+        th {
+            padding: 10px 12px;
         }
 
         td {
-            padding: 8px 4px;
+            padding: 10px 12px;
         }
     </style>
 </head>
@@ -30,15 +41,21 @@
     <div id="vue">
         <table>
             <tr>
-                <th>sha</th>
-                <th>repo</th>
-                <th>message</th>
+                <th>Hash</th>
+                <th>Repository</th>
+                <th>Time</th>
+                <th>Message</th>
             </tr>
             <tr v-for="commit in commits">
-                <td>{{ commit.sha }}</td>
+                <td>
+                    <a :href="commit.url">
+                        {{ commit.sha.slice(0, 7) }}
+                    </a>
+                </td>
                 <td>
                     <a :href="commit.repo.url">{{ commit.repo.name }}</a>
                 </td>
+                <td>{{ commit.createdAt }}</td>
                 <td>{{ commit.message }}</td>
             </tr>
         </table>

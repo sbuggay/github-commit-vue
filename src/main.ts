@@ -1,5 +1,7 @@
 import * as express from "express";
 import * as octokat from "octokat";
+import * as moment from "moment";
+
 const app = express();
 
 const USER = "sbuggay";
@@ -17,7 +19,7 @@ function getCommits() {
                     if (commit.author.email === EMAIL) {
                         commits.push({
                             repo: event.repo,
-                            createdAt: event.createdat,
+                            createdAt: moment(event.createdAt).format("MMMM Do YYYY, hh:mm:ss"),
                             ...commit
                         });
                     }
