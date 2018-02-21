@@ -21,7 +21,7 @@ function getCommits() {
                     .map((commit, index, array) => ({
                         link: array.length === 1 ? 0 : index === 0 ? 1 : index === (array.length - 1) ? 3 : 2,
                         repo: event.repo,
-                        createdAt: moment(event.createdAt).format("MMMM Do YYYY, hh:mm:ss"),
+                        createdAt: moment(event.createdAt).format("MMMM Do YYYY, hh:mm:ss A"),
                         commitUrl: commit.url.replace("api.", "").replace("repos/", "").replace("commits", "commit"),
                         repoUrl: event.repo.url.replace("api.", "").replace("repos/", ""),
                         ...commit,
