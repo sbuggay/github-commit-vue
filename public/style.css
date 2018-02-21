@@ -1,0 +1,38 @@
+body {
+    font-size: 16px;
+    padding: 20px 20px;
+    font-family: Consolas, Monaco, Menlo, monospace;
+    color: #eee;
+    background-color: #273245;
+}
+
+a {
+    color: eee
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+table tr:nth-child(odd) {
+    background: #19202c;
+}
+
+table tr:nth-child(even) {
+    background: #202938;
+}
+
+th {
+    padding: 10px 12px;
+}
+
+td {
+    padding: 10px 12px;
+}
+
+.chain {
+    width: 40px;
+    padding: 0;
+}
