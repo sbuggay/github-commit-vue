@@ -2,11 +2,11 @@ const app = new Vue({
     el: "#vue",
     data: {
         commits: [],
-        refresh: 60000 // refresh time in ms
+        refresh: 10000 // refresh time in ms
     },
     created() {
         this.fetchCommits();
-        setTimeout(this.fetchCommits(), this.refresh);
+        setTimeout(this.fetchCommits, this.refresh);
     },
     methods: {
         async fetchCommits() {

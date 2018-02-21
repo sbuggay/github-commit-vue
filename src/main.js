@@ -5,7 +5,6 @@ const moment = require("moment");
 const app = express();
 
 const user = process.env.GITHUB_COMMIT_VUE_USER || "";
-const email = process.env.GITHUB_COMMIT_VUE_EMAIL || "";
 const token = process.env.GITHUB_COMMIT_VUE_TOKEN || "";
 const port = process.env.GITHUB_COMMIT_VUE_PORT || 3030;
 const github = octokat({
@@ -19,14 +18,15 @@ function getCommits() {
             .filter(event => event.type === "PushEvent")
             .map(event => {
                 return event.payload.commits.reverse()
-                    .filter(commit => commit.author.email === email)
                     .map((commit, index, array) => ({
                         link: array.length === 1 ? 0 : index === 0 ? 1 : index === (array.length - 1) ? 3 : 2,
                         repo: event.repo,
                         createdAt: moment(event.createdAt).format("MMMM Do YYYY, hh:mm:ss"),
+                        commitUrl: commit.url.replace("api.", "").replace("repos/", "").replace("commits", "commit"),
+                        repoUrl: event.repo.url.replace("api.", "").replace("repos/", ""),
                         ...commit,
                     }));
-            }).reduce((list, commits) => list.concat(commits), []));
+            }).reduce((list, commits) => list.concat(commits), []).slice(0, 22));
 }
 
 // server static
@@ -39,7 +39,7 @@ app.get("/api", (req, res) => {
     });
 });
 
-if (user && email && token) {
+if (user && token) {
     // Start listening
     app.listen(port, () => console.log(`app started`));
 } else {
