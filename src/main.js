@@ -40,8 +40,6 @@ function apiToUrl(apiUrl) {
  * @returns list of commits
  */
 function getCommits() {
-    console.log(envOptions.user, envOptions.token);
-
     return github.fromUrl(`https://api.github.com/users/${envOptions.user}/events`).fetch()
         .then(events => events.items
             .filter(event => event.type === "PushEvent")
