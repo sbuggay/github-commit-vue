@@ -10,19 +10,28 @@ Install dependencies
 npm install
 ```
 
-Set the environment variables: `GITHUB_COMMIT_VUE_USER` and `GITHUB_COMMIT_VUE_TOKEN`. You can generate a new token here: https://github.com/settings/tokens.
+## Usage
 
-Windows
 ```
-GITHUB_COMMIT_VUE_USER=sbuggay
+Usage: main [options]
+
+
+  Options:
+
+    -V, --version  output the version number
+    -u, --user     GitHub Username
+    -t, --token    GitHub API Token
+    -p, --port     Port
+    -h, --help     output usage information
 ```
 
-Linux
-```
-export GITHUB_COMMIT_VUE_USER=sbuggay
-```
 
-There is also the optional `GITHUB_COMMIT_VUE_PORT` which defaults to `3030`.
+These options can also be set through env variables, although the command line arguments take precedence.
+- `GITHUB_COMMIT_VUE_USER`
+- `GITHUB_COMMIT_VUE_TOKEN`
+- `GITHUB_COMMIT_VUE_PORT` (optional, default: 3030)
+
+You can generate a new token here: https://github.com/settings/tokens.
 
 ```
 npm start
