@@ -10,7 +10,17 @@ Install dependencies
 npm install
 ```
 
-You need to set three env variables `GITHUB_COMMIT_VUE_USER`, `GITHUB_COMMIT_VUE_EMAIL`, `GITHUB_COMMIT_VUE_TOKEN`. You can generate a new token here: https://github.com/settings/tokens.
+Set the environment variables: `GITHUB_COMMIT_VUE_USER` and `GITHUB_COMMIT_VUE_TOKEN`. You can generate a new token here: https://github.com/settings/tokens.
+
+Windows
+```
+GITHUB_COMMIT_VUE_USER=sbuggay
+```
+
+Linux
+```
+export GITHUB_COMMIT_VUE_USER=sbuggay
+```
 
 There is also the optional `GITHUB_COMMIT_VUE_PORT` which defaults to `3030`.
 
