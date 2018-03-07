@@ -39,8 +39,8 @@ function apiToUrl(apiUrl) {
  * 
  * @returns list of commits
  */
-function getCommits() {
-    return github.fromUrl(`https://api.github.com/users/${envOptions.user}/events`).fetch()
+function getUserCommits(user) {
+    return github.fromUrl(`https://api.github.com/users/${user}/events`).fetch()
         .then(events => events.items
             .filter(event => event.type === "PushEvent")
             .map(event => {
@@ -62,16 +62,19 @@ app.use(express.static("./public"));
 
 // Commit API endpoint
 app.get("/api", (req, res) => {
-    getCommits().then(commits => {
+    getUserCommits(envOptions.user).then(commits => {
         res.send(commits);
     });
 });
 
 if (envOptions.user && envOptions.token) {
-    // Start listening
+
+    // Set up octokat with API key
     github = octokat({
         token: envOptions.token
     });
+
+    // Start listening
     app.listen(envOptions.port, () => console.log(`${packageJson.name} listening on port ${envOptions.port}`));
 } else {
     console.error("You must set GITHUB_COMMIT_VUE_USER or -u and GITHUB_COMMIT_VUE_TOKEN or -t options.")

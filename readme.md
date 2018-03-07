@@ -25,8 +25,8 @@ Usage: main [options]
 
     -V, --version  output the version number
     -u, --user     GitHub Username
-    -t, --token    GitHub API Token
-    -p, --port     Port
+    -t, --token    GitHub API Token (https://github.com/settings/tokens)
+    -p, --port     Port (optional, default: 3030)
     -h, --help     output usage information
 ```
 
