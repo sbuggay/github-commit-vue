@@ -8,13 +8,18 @@ github-commit-vue is a simple single page app that will show you your latest com
 
 You can acquire this through:
 ```
-npm install -g github-commit-vue
+> npm install -g github-commit-vue
 ```
 
 Run it with simply:
 ```
-github-commit-vue [options]
+> github-commit-vue [options]
 ```
+
+```
+github-commit-vue listening on port 3030
+```
+
 ## Usage
 
 ```
