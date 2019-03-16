@@ -4,7 +4,7 @@
 
 ![demo](https://raw.githubusercontent.com/sbuggay/github-commit-vue/master/demo/demo.png)
 
-github-commit-vue is a simple single page app that will show you your latest commits. This can probably easily be changed to track certain project/organization commits instead which would be far more interesting for a team dashboard or something.
+github-commit-vue is a simple single page app that will show you your latest commits. This can probably easily be changed to track certain project/organization commits instead which would be far more interesting for a team dashboard or something. Inspired by a picture of a leaked Valve commit tool.
 
 You can acquire this through:
 ```
